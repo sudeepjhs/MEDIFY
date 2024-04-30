@@ -1,5 +1,5 @@
-import Banner from "@/components/Banner";
-import Footer from "@/components/footer";
+import Banner from "@/components/layout/Banner";
+import Footer from "@/components/layout/footer";
 import { Navbar } from "@/components/navbar";
 import { fontPoppins } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
