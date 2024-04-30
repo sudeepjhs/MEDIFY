@@ -7,7 +7,6 @@ import "@/styles/globals.css";
 import clsx from "clsx";
 import { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
-import NavBarSearch from "@/components/NavBarSearch";
 
 export const metadata: Metadata = {
   title: {
