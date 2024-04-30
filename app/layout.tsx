@@ -51,7 +51,7 @@ export default function RootLayout({
           <div className="relative flex flex-col h-screen">
             <Banner />
             <Navbar />
-            <main className="bg-blue-50 flex-grow">{children}</main>
+            <main className="flex-grow">{children}</main>
             <Footer />
           </div>
         </Providers>
