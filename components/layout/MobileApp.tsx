@@ -2,6 +2,7 @@ import { Button, Image, Input } from "@nextui-org/react";
 import { FC } from "react";
 import { FaApple, FaGooglePlay } from "react-icons/fa";
 import NextLink from "next/link";
+import { title } from "../primitives";
 const MobileApp: FC = () => {
   return (
     <section className="flex justify-center gap-8 bg-blue-50  md:pt-10 relative w-full">
@@ -13,9 +14,9 @@ const MobileApp: FC = () => {
           <Image src="./images/arrow.png" width={50} />
         </div>
         <div className="flex flex-col">
-          <div className="font-semibold flex flex-col gap-4 text-5xl text-[#1B3C74]">
-            <h3>Download the</h3>
-            <h3>
+          <div className="font-semibold flex flex-col gap-4 ">
+            <h3 className={title({ color: "blue" })}>Download the</h3>
+            <h3 className={title({ color: "blue" })} >
               <span className="text-primary">Medify</span> App
             </h3>
           </div>
