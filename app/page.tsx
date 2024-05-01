@@ -4,6 +4,10 @@ import {
   CardIconButton,
   IconButton,
 } from "@/components/custom/button/CardButton";
+import Ads from "@/components/landingPage/Ads";
+import DoctorSpecialisation from "@/components/landingPage/DoctorSpecialisation";
+import PatientCaring from "@/components/landingPage/PatientCaring";
+import Specialisation from "@/components/landingPage/Specialisation";
 import { Button, Image, Input } from "@nextui-org/react";
 import {
   FaAmbulance,
@@ -96,7 +100,7 @@ export default function Home() {
             <div className="flex  w-full justify-evenly">
               {ButtonList.map((item, i) => (
                 <CardIconButton
-                  className="xl:min-w-48 lg:min-w-36"
+                  className="2xl:min-w-48 lg:min-w-36"
                   Icon={item.Icon}
                   label={item.label}
                   key={`icon-button-${i}-${item.href || "#"}`}
@@ -106,7 +110,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col relative items-center justify-center gap-4 py-8 md:pt-40"></section>
+      <Ads />
+      <Specialisation />
+      <DoctorSpecialisation />
+      <PatientCaring />
     </>
   );
 }

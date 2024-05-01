@@ -1,12 +1,12 @@
 import { tv } from "tailwind-variants";
 
-export const custom = tv({
-  base: "tracking-tight inline font-semibold",
+export const title = tv({
+  base: "tracking-tight inline font-semibold capitalize",
   variants: {
     color: {
       violet: "from-[#FF1CF7] to-[#b249f8]",
       yellow: "from-[#FF705B] to-[#FFB457]",
-      blue: "from-[#2AA7FF] to-[#0C8CE5]",
+      blue: "from-[#1B3C74] to-[#1B3C74]",
       cyan: "from-[#00b7fa] to-[#01cfea]",
       green: "from-[#6FEE8D] to-[#17c964]",
       pink: "from-[#FF72E1] to-[#F54C7A]",
@@ -35,7 +35,7 @@ export const custom = tv({
         "pink",
         "foreground",
       ],
-      class: "bg-clip-text text-transparent bg-gradient-to-b",
+      class: "bg-clip-text text-transparent bg-gradient-to-b py-2",
     },
   ],
 });

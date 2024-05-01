@@ -37,6 +37,7 @@ module.exports = {
             primary: {
               DEFAULT: "#2AA7FF",
               500: "#2AA8FF",
+              800: "#1B3C74",
             },
             secondary: {
               DEFAULT: "#14BEF0",
