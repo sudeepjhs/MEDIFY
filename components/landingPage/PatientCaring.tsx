@@ -10,9 +10,9 @@ const PatientCaring: FC = () => {
     return (
         <section className="flex  justify-center py-10 gap-16 bg-blue-50 md:min-w-[450px]">
             <div className="relative float-end ">
-                <Image loading="lazy" src="./images/pc-2.png" />
+                <Image loading="lazy" src="/images/pc-2.png" />
                 <div className="absolute top-1/3 -left-1/2 z-10">
-                    <Image loading="lazy" src="./images/pc-1.png" />
+                    <Image loading="lazy" src="/images/pc-1.png" />
                 </div>
                 <div className="absolute shadow-xl -left-1/2  top-10 z-20 gap-1 flex flex-col items-center bg-primary-foreground p-3 rounded-lg">
                     <div className="flex gap-2 items-center">

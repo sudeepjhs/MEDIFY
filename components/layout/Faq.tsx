@@ -1,3 +1,4 @@
+"use client";
 import { Accordion, AccordionItem, Image } from "@nextui-org/react";
 import { FaPlus, FaSmile } from "react-icons/fa";
 import { HandWithHeart, SmileFace } from "../icons";
@@ -30,7 +31,7 @@ const Faq = () => {
           <Image
             className="shadow-xl"
             removeWrapper
-            src="./images/happy-customer.png"
+            src="/images/happy-customer.png"
             width={500}
           />
           <div className="absolute shadow-xl bottom-20 -left-20 z-20 gap-4 flex items-center bg-primary-foreground p-6 rounded-lg">

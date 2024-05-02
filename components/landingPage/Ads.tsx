@@ -9,19 +9,19 @@ import { Image } from "@nextui-org/react";
 import "../../styles/swiper.css"
 const advList = [
     {
-        url: "./images/ad/ad-1.png",
+        url: "/images/ad/ad-1.png",
         name: "ad-1"
     },
     {
-        url: "./images/ad/ad-2.png",
+        url: "/images/ad/ad-2.png",
         name: "ad-2"
     },
     {
-        url: "./images/ad/ad-1.png",
+        url: "/images/ad/ad-1.png",
         name: "ad-1"
     },
     {
-        url: "./images/ad/ad-2.png",
+        url: "/images/ad/ad-2.png",
         name: "ad-2"
     }
 ]

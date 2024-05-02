@@ -7,11 +7,11 @@ const MobileApp: FC = () => {
   return (
     <section className="flex justify-center gap-8 bg-blue-50  md:pt-10 relative w-full">
       <div className="">
-        <Image removeWrapper src="./images/mobile-app.png" width={500} />
+        <Image removeWrapper src="/images/mobile-app.png" width={500} />
       </div>
       <div className="flex mt-12 gap-6">
         <div className="mt-10">
-          <Image src="./images/arrow.png" width={50} />
+          <Image src="/images/arrow.png" width={50} />
         </div>
         <div className="flex flex-col">
           <div className="font-semibold flex flex-col gap-4 ">

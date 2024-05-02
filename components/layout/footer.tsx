@@ -34,7 +34,6 @@ const FooterLink: FC<{ label: string; href?: string }> = ({
 const Footer: FC = () => {
   return (
     <>
-      <Faq />
       <MobileApp />
       <footer className="w-full flex  items-center bg-blue-800 justify-center py-10">
         <div className="flex flex-col w-4/5 gap-4">

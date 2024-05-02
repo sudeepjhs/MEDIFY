@@ -1,12 +1,13 @@
 import { FaClinicMedical, FaHeartbeat, FaStethoscope, FaXRay } from "react-icons/fa";
 import { FaBedPulse, FaShieldVirus } from "react-icons/fa6";
 import { PiTestTubeFill } from "react-icons/pi";
-import { CardIconButton, IconButton } from "../custom/button/CardButton";
+import { CardIconButton } from "../custom/button/CardButton";
 import { title } from "../primitives";
 import { Button } from "@nextui-org/button";
+import { CustomIconButton } from "@/config/types";
 
 
-const specialisationList: Array<IconButton> = [
+const specialisationList: Array<CustomIconButton> = [
     {
         Icon: FaClinicMedical,
         label: "Dentistry",

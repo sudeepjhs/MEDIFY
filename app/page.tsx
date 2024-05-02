@@ -1,14 +1,19 @@
 "use client";
 
 import {
-  CardIconButton,
-  IconButton,
+  CardIconButton
 } from "@/components/custom/button/CardButton";
 import Ads from "@/components/landingPage/Ads";
+import BlogNews from "@/components/landingPage/BlogNews";
 import DoctorSpecialisation from "@/components/landingPage/DoctorSpecialisation";
+import Family from "@/components/landingPage/Family";
 import PatientCaring from "@/components/landingPage/PatientCaring";
 import Specialisation from "@/components/landingPage/Specialisation";
-import { Button, Image, Input } from "@nextui-org/react";
+import Faq from "@/components/layout/Faq";
+import { Options } from "@/components/layout/NavBarSearch";
+import { cityUrl, stateUrl } from "@/config/apiUrls";
+import { Autocomplete, AutocompleteItem, Button, Image, Input } from "@nextui-org/react";
+import { FormEvent, Key, useEffect, useState } from "react";
 import {
   FaAmbulance,
   FaClinicMedical,
@@ -17,8 +22,10 @@ import {
   FaUserMd,
 } from "react-icons/fa";
 import { RiCapsuleLine } from "react-icons/ri";
+import { useRouter } from 'next/navigation'
+import { CustomIconButton } from "@/config/types";
 
-const ButtonList: Array<IconButton> = [
+const ButtonList: Array<CustomIconButton> = [
   {
     Icon: FaUserMd,
     label: "Doctors",
@@ -41,7 +48,47 @@ const ButtonList: Array<IconButton> = [
   },
 ];
 
+
+
 export default function Home() {
+  const router = useRouter()
+  const [state, setState] = useState<Array<Options>>([])
+  const [city, setCity] = useState<Array<Options>>([])
+  const [selectedState, setSelectedState] = useState<Key | null>(null)
+  const [selectedCity, setSelectedCity] = useState<Key | null>(null)
+  useEffect(() => {
+    fetch(stateUrl).then((res) => res.json()).then((data: []) => {
+      setState(() => {
+        return data.map((s) => ({ label: s, value: s }))
+      })
+    })
+  }, [])
+
+  const onStateChangeHandler = (value: Key) => {
+    setSelectedState(() => value)
+  }
+
+  const onCityChangeHandler = (value: Key) => {
+    setSelectedCity(() => value)
+  }
+
+  const onSearchClick = (e: FormEvent) => {
+    e.preventDefault();
+    if (selectedState && selectedCity)
+      router.push(`/search/${selectedState}/${selectedCity}`)
+  }
+
+  useEffect(() => {
+    if (selectedState)
+      fetch(cityUrl(selectedState as string)).then((res) => res.json()).then((data: []) => {
+        setCity(() => {
+          return data.map((s) => ({ label: s, value: s }))
+        })
+        setSelectedCity(() => null)
+      })
+  }, [selectedState])
+
+
   return (
     <>
       <section className="flex flex-col relative items-center justify-center gap-4  md:pt-10 bg-blue-50 md:pb-40">
@@ -66,24 +113,32 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <Image alt="doctor-image" src="./images/doctor.png"></Image>
+            <Image alt="doctor-image" src="/images/doctor.png"></Image>
           </div>
         </div>
         <div className="absolute flex flex-col gap-5 md:top-2/3 bg-primary-foreground rounded-xl  shadow-xl z-20 w-4/5 p-10">
-          <form className="flex gap-5 justify-around">
-            <Input
+          <form className="flex gap-5 justify-around" onSubmit={onSearchClick}>
+            <Autocomplete
               startContent={<FaSearch fill="#E4E4E7" />}
-              type="search"
               placeholder="State"
               className="max-w-64"
-            />
+              defaultItems={state}
+              aria-labelledby="state"
+              onSelectionChange={onStateChangeHandler}
+            >
+              {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
+            </Autocomplete>
 
-            <Input
+            <Autocomplete
               startContent={<FaSearch fill="#E4E4E7" />}
-              type="search"
               placeholder="City"
               className="max-w-64"
-            />
+              defaultItems={city}
+              aria-labelledby="city"
+              onSelectionChange={onCityChangeHandler}
+            >
+              {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
+            </Autocomplete>
 
             <Button
               startContent={<FaSearch />}
@@ -100,6 +155,7 @@ export default function Home() {
             <div className="flex  w-full justify-evenly">
               {ButtonList.map((item, i) => (
                 <CardIconButton
+                  clickable
                   className="2xl:min-w-48 lg:min-w-36"
                   Icon={item.Icon}
                   label={item.label}
@@ -114,6 +170,9 @@ export default function Home() {
       <Specialisation />
       <DoctorSpecialisation />
       <PatientCaring />
+      <BlogNews />
+      <Family />
+      <Faq />
     </>
   );
 }

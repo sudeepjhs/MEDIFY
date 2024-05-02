@@ -11,27 +11,27 @@ import { FC } from "react";
 
 const doctorList = [
     {
-        url: "./images/doctors/doctor-ahmad.png",
+        url: "/images/doctors/doctor-ahmad.png",
         name: "doctor-ahmad"
     },
     {
-        url: "./images/doctors/doctor-heena.png",
+        url: "/images/doctors/doctor-heena.png",
         name: "doctor-heena"
     },
     {
-        url: "./images/doctors/doctor-ankur.png",
+        url: "/images/doctors/doctor-ankur.png",
         name: "doctor-ankur"
     },
     {
-        url: "./images/doctors/doctor-ahmad.png",
+        url: "/images/doctors/doctor-ahmad.png",
         name: "doctor-ahmad"
     },
     {
-        url: "./images/doctors/doctor-heena.png",
+        url: "/images/doctors/doctor-heena.png",
         name: "doctor-heena"
     },
     {
-        url: "./images/doctors/doctor-ankur.png",
+        url: "/images/doctors/doctor-ankur.png",
         name: "doctor-ankur"
     },
 ]
