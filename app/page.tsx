@@ -12,7 +12,9 @@ import Specialisation from "@/components/landingPage/Specialisation";
 import Faq from "@/components/layout/Faq";
 import { Options } from "@/components/layout/NavBarSearch";
 import { cityUrl, stateUrl } from "@/config/apiUrls";
-import { Autocomplete, AutocompleteItem, Button, Image, Input } from "@nextui-org/react";
+import { CustomIconButton } from "@/config/types";
+import { Autocomplete, AutocompleteItem, Button, Image } from "@nextui-org/react";
+import { useRouter } from 'next/navigation';
 import { FormEvent, Key, useEffect, useState } from "react";
 import {
   FaAmbulance,
@@ -22,8 +24,6 @@ import {
   FaUserMd,
 } from "react-icons/fa";
 import { RiCapsuleLine } from "react-icons/ri";
-import { useRouter } from 'next/navigation'
-import { CustomIconButton } from "@/config/types";
 
 const ButtonList: Array<CustomIconButton> = [
   {
@@ -173,6 +173,7 @@ export default function Home() {
       <BlogNews />
       <Family />
       <Faq />
+
     </>
   );
 }

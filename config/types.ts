@@ -1,34 +1,16 @@
 import { IconType } from "react-icons";
 
 export interface Hospital {
-  ProviderID: string;
   HospitalName: string;
   Address: string;
   City: string;
   State: string;
   ZIPCode: number;
-  CountyName: string;
-  PhoneNumber: number;
-  HospitalType: string;
-  HospitalOwnership: string;
-  EmergencyServices: string;
-  EHRs: string;
+  CountyName?: string;
+  PhoneNumber?: number;
+  HospitalType?: string;
+  HospitalOwnership?: string;
   rating: number;
-  footnote: string;
-  MNcomparison: string;
-  MNComparisonFootnote: string;
-  SNcomparison: string;
-  SNComparisonFootnote: string;
-  RNComparison: string;
-  RNComparisonFootnote: string;
-  PNComparison: string;
-  PNComparisonFootnote: string;
-  ENComparison: string;
-  ENComparisonFootnote: string;
-  FNComparison: string;
-  FNComparisonFootnote: string;
-  EMINComparison: string;
-  EMINComparisonfootnote: string;
 }
 
 export interface Post {
