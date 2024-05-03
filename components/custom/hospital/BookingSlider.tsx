@@ -22,7 +22,8 @@ const CalenderSlot: FC<{
     <div
       data-selected={isSelected}
       className={clsx(
-        "flex border-b-5 flex-col cursor-pointer grow justify-center items-center px-6 py-2 data-[selected=true]:border-b-primary data-[selected=false]: border-b-gray-300"
+        "flex border-b-5 flex-col cursor-pointer grow lg:justify-center lg:items-center px-6 py-2 data-[selected=true]:border-b-primary data-[selected=false]: border-b-gray-300",
+        "text-sm md:text-medium"
       )}
       data-date={date}
       onClick={onClick}
@@ -83,7 +84,7 @@ const BookingSlider: FC<BookingSliderProps> = ({
 
   return (
     <div>
-      <div className="flex justify-center mb-4 items-center gap-4">
+      <div className="flex justify-center mb-4 items-center md:gap-4">
         <div
           className="rounded-full h-fit p-2 text-primary border block cursor-pointer hover:bg-blue-50"
           onClick={handlePrevClick}
@@ -126,9 +127,9 @@ const BookingSlider: FC<BookingSliderProps> = ({
         </div>
       </div>
       <div className="flex flex-col divide-y divide-solid px-4">
-        <div className="grid grid-cols-6 gap-6 p-3 grid-rows-1">
-          <div className="col-end-2">Morning</div>
-          <div className="grid col-span-4 grid-cols-5 gap-4">
+        <div className="grid sm:grid-cols-6 gap-6 p-3 grid-rows-1">
+          <div className="sm:col-end-2">Morning</div>
+          <div className="grid col-span-4 grid-cols-2  sm:grid-cols-4 lg:grid-cols-5  gap-4">
             {timeSlot.morning.map((time) => (
               <Popover
                 key={`${selectedDate}-${time}-morning`}
@@ -167,9 +168,9 @@ const BookingSlider: FC<BookingSliderProps> = ({
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-6 gap-6 p-3 grid-rows-1">
-          <div className="col-end-2">Afternoon</div>
-          <div className="grid col-span-4 grid-cols-5 gap-4">
+        <div className="grid sm:grid-cols-6 gap-6 p-3 grid-rows-1">
+          <div className="sm:col-end-2">Afternoon</div>
+          <div className="grid col-span-4 grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-4">
             {timeSlot.afternoon.map((time) => (
               <Popover
                 key={`${selectedDate}-${time}-afternoon`}
@@ -208,9 +209,9 @@ const BookingSlider: FC<BookingSliderProps> = ({
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-6 gap-6 p-3 grid-rows-1">
-          <div className="col-end-2">Evening</div>
-          <div className="grid col-span-4 grid-cols-5 gap-4">
+        <div className="grid sm:grid-cols-6 gap-6 p-3 grid-rows-1">
+          <div className="sm:col-end-2">Evening</div>
+          <div className="grid col-span-4  grid-cols-2  sm:grid-cols-4 lg:grid-cols-5  gap-4">
             {timeSlot.evening.map((time) => (
               <Popover
                 key={`${selectedDate}-${time}-evening`}

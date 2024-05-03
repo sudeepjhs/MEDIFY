@@ -37,20 +37,20 @@ export default function SearchResult({
   }, []);
 
   return (
-    <div className="w-4/5">
+    <div className="md:w-4/5 px-2">
       <div className="space-y-2">
         <h1 className="font-medium text-2xl">
-          15 medical centers available in {state}
+          {hospital.length} medical centers available in {city}
         </h1>
-        <div className="flex gap-2 items-center">
+        <div className="flex gap-2 iems-center">
           <TbDiscountCheck size={24} className="text-success" />
           <h6 className="text-default-600">
             Book appointments with minimum wait-time & verified doctor details
           </h6>
         </div>
       </div>
-      <div className="flex justify-between mt-6 gap-8">
-        <div className="flex flex-col gap-8">
+      <div className="flex justify-between mt-6 md:gap-8">
+        <div className="flex flex-col gap-8 overflow-hidden">
           {hospital.map((data, i) => (
             <HospitalCard
               slotDates={upcomingDates}
@@ -59,7 +59,7 @@ export default function SearchResult({
             />
           ))}
         </div>
-        <div>
+        <div className="hidden md:block">
           <Image
             src={"/images/ad/offer-1.png"}
             height={300}

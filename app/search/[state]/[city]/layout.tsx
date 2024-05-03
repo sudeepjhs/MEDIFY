@@ -10,7 +10,7 @@ export default function SearchLayout({
 }) {
     return <>
         <NavBarSearch />
-        <section className="w-full bg-blue-50 py-36  flex justify-center">
+        <section className="w-full bg-blue-50 py-32  flex justify-center">
             {children}
         </section>
         <Faq />
