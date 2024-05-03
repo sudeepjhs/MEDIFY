@@ -29,3 +29,9 @@ export interface CustomIconButton {
   href?: string;
   label: string | JSX.Element;
 }
+
+export enum TimeType {
+  Morning = "morning",
+  Afternoon = "afternoon",
+  Evening = "evening",
+}

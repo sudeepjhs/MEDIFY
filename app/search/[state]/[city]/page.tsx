@@ -3,9 +3,12 @@ import HospitalCard from "@/components/custom/card/HospitalCard";
 import BookingSlider from "@/components/custom/hospital/BookingSlider";
 import { getHospitalUrl } from "@/config/apiUrls";
 import { Hospital } from "@/config/types";
+import { getUpcomingDates } from "@/helper/date";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { TbDiscountCheck } from "react-icons/tb";
+
+const upcomingDates = getUpcomingDates(7);
 
 export default function SearchResult({
   params: { state, city },
@@ -49,9 +52,12 @@ export default function SearchResult({
       <div className="flex justify-between mt-6 gap-8">
         <div className="flex flex-col gap-8">
           {hospital.map((data, i) => (
-            <HospitalCard key={data.HospitalName + "-" + i} hospital={data} />
+            <HospitalCard
+              slotDates={upcomingDates}
+              key={data.HospitalName + "-" + i}
+              hospital={data}
+            />
           ))}
-          
         </div>
         <div>
           <Image
