@@ -26,15 +26,14 @@ const Faq = () => {
         <h6 className="text-primary">Get Your Answer</h6>
         <h3 className={title({ color: "blue" })}>Frequently Asked Questions</h3>
       </div>
-      <div className="flex justify-center items-center gap-10 md:gap-20">
-        <div className="relative">
+      <div className="flex flex-col lg:flex-row justify-center items-center gap-10 md:gap-20">
+        <div className="hidden sm:block relative">
           <Image
             className="shadow-xl"
             removeWrapper
             src="/images/happy-customer.png"
-            width={500}
           />
-          <div className="absolute shadow-xl bottom-20 -left-20 z-20 gap-4 flex items-center bg-primary-foreground p-6 rounded-lg">
+          <div className="absolute shadow-xl bottom-20 -left-20 z-20 gap-4 md:flex items-center bg-primary-foreground p-6 rounded-lg">
             <SmileFace size={44} />
             <div>
               <strong>84k+</strong>

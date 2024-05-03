@@ -35,10 +35,10 @@ const Footer: FC = () => {
   return (
     <>
       <MobileApp />
-      <footer className="w-full flex  items-center bg-blue-800 justify-center py-10">
+      <footer className="w-full flex items-center bg-blue-800 justify-center py-10">
         <div className="flex flex-col w-4/5 gap-4">
-          <div className="grid grid-cols-5 gap-4">
-            <div className="col-span-2 flex flex-col justify-between pb-2 ">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+            <div className="sm:col-span-3 md:col-span-2 flex flex-col justify-between pb-2 ">
               <LogoWithName />
               <div className="flex gap-2">
                 <NextLink
@@ -73,7 +73,7 @@ const Footer: FC = () => {
             </div>
             {siteConfig.footer.navItems.map((list, i) => {
               return (
-                <div key={"footer-nav-list-" + i}>
+                <div className="-order-1 md:order-1" key={"footer-nav-list-" + i}>
                   <ul className="flex flex-col gap-2">
                     {list.map((item, j) => (
                       <FooterLink

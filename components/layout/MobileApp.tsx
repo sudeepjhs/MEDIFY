@@ -5,37 +5,43 @@ import NextLink from "next/link";
 import { title } from "../primitives";
 const MobileApp: FC = () => {
   return (
-    <section className="flex justify-center gap-8 bg-blue-50  md:pt-10 relative w-full">
-      <div className="">
+    <section className="flex justify-center gap-8 bg-blue-50 px-6 pb-10  md:pb-0  pt-10 relative w-full">
+      <div className="hidden md:block">
         <Image removeWrapper src="/images/mobile-app.png" width={500} />
       </div>
-      <div className="flex mt-12 gap-6">
-        <div className="mt-10">
+      <div className="flex md:mt-12 gap-6">
+        <div className="mt-10 hidden lg:block">
           <Image src="/images/arrow.png" width={50} />
         </div>
-        <div className="flex flex-col">
-          <div className="font-semibold flex flex-col gap-4 ">
+        <div className="flex flex-col gap-6">
+          <div className="font-semibold flex flex-col lg:gap-4 ">
             <h3 className={title({ color: "blue" })}>Download the</h3>
-            <h3 className={title({ color: "blue" })} >
+            <h3 className={title({ color: "blue" })}>
               <span className="text-primary">Medify</span> App
             </h3>
           </div>
-          <div className="mt-6 flex flex-col gap-2">
-            <strong>Get the link to download the app</strong>
+          <div className="flex flex-col gap-2">
+            <strong className="text-sm sm:text-medium">
+              Get the link to download the app
+            </strong>
             <div className="flex gap-4">
-              <Input
-                type="tel"
-                placeholder="Enter phone number"
-                startContent={
-                  <div className="pointer-events-none flex items-center">
-                    <span className="text-small">+91</span>
-                  </div>
-                }
-              />
-              <Button color="primary">Send SMS</Button>
+              <div>
+                <Input
+                  type="tel"
+                  placeholder="Enter phone number"
+                  startContent={
+                    <div className="pointer-events-none flex items-center">
+                      <span className="text-small">+91</span>
+                    </div>
+                  }
+                />
+              </div>
+              <div>
+                <Button color="primary">Send SMS</Button>
+              </div>
             </div>
           </div>
-          <div className="flex mt-10 gap-6">
+          <div className="flex flex-col sm:flex-row gap-6">
             <Button
               size="lg"
               as={NextLink}

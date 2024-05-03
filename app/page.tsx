@@ -1,8 +1,6 @@
 "use client";
 
-import {
-  CardIconButton
-} from "@/components/custom/button/CardButton";
+import { CardIconButton } from "@/components/custom/button/CardButton";
 import Ads from "@/components/landingPage/Ads";
 import BlogNews from "@/components/landingPage/BlogNews";
 import DoctorSpecialisation from "@/components/landingPage/DoctorSpecialisation";
@@ -13,8 +11,13 @@ import Faq from "@/components/layout/Faq";
 import { Options } from "@/components/layout/NavBarSearch";
 import { cityUrl, stateUrl } from "@/config/apiUrls";
 import { CustomIconButton } from "@/config/types";
-import { Autocomplete, AutocompleteItem, Button, Image } from "@nextui-org/react";
-import { useRouter } from 'next/navigation';
+import {
+  Autocomplete,
+  AutocompleteItem,
+  Button,
+  Image,
+} from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import { FormEvent, Key, useEffect, useState } from "react";
 import {
   FaAmbulance,
@@ -48,60 +51,61 @@ const ButtonList: Array<CustomIconButton> = [
   },
 ];
 
-
-
 export default function Home() {
-  const router = useRouter()
-  const [state, setState] = useState<Array<Options>>([])
-  const [city, setCity] = useState<Array<Options>>([])
-  const [selectedState, setSelectedState] = useState<Key | null>(null)
-  const [selectedCity, setSelectedCity] = useState<Key | null>(null)
+  const router = useRouter();
+  const [state, setState] = useState<Array<Options>>([]);
+  const [city, setCity] = useState<Array<Options>>([]);
+  const [selectedState, setSelectedState] = useState<Key | null>(null);
+  const [selectedCity, setSelectedCity] = useState<Key | null>(null);
   useEffect(() => {
-    fetch(stateUrl).then((res) => res.json()).then((data: []) => {
-      setState(() => {
-        return data.map((s) => ({ label: s, value: s }))
-      })
-    })
-  }, [])
+    fetch(stateUrl)
+      .then((res) => res.json())
+      .then((data: []) => {
+        setState(() => {
+          return data.map((s) => ({ label: s, value: s }));
+        });
+      });
+  }, []);
 
   const onStateChangeHandler = (value: Key) => {
-    setSelectedState(() => value)
-  }
+    setSelectedState(() => value);
+  };
 
   const onCityChangeHandler = (value: Key) => {
-    setSelectedCity(() => value)
-  }
+    setSelectedCity(() => value);
+  };
 
   const onSearchClick = (e: FormEvent) => {
     e.preventDefault();
     if (selectedState && selectedCity)
-      router.push(`/search/${selectedState}/${selectedCity}`)
-  }
+      router.push(`/search/${selectedState}/${selectedCity}`);
+  };
 
   useEffect(() => {
     if (selectedState)
-      fetch(cityUrl(selectedState as string)).then((res) => res.json()).then((data: []) => {
-        setCity(() => {
-          return data.map((s) => ({ label: s, value: s }))
-        })
-        setSelectedCity(() => null)
-      })
-  }, [selectedState])
-
+      fetch(cityUrl(selectedState as string))
+        .then((res) => res.json())
+        .then((data: []) => {
+          setCity(() => {
+            return data.map((s) => ({ label: s, value: s }));
+          });
+          setSelectedCity(() => null);
+        });
+  }, [selectedState]);
 
   return (
     <>
-      <section className="flex flex-col relative items-center justify-center gap-4  md:pt-10 bg-blue-50 md:pb-40">
+      <section className="flex flex-col relative items-center justify-center gap-4  pt-10 bg-blue-50 pb-24 md:pb-40">
         <div className="flex w-4/5">
           <div className="grow">
             <div className="lg:w-4/6 flex flex-col gap-3 ">
               <h5 className="xl:text-2xl lg:text-xl font-medium">
                 Skip the travel! Find Online
               </h5>
-              <h3 className="font-bold xl:text-5xl lg:text-4xl">
+              <h3 className="font-bold text-sm xl:text-5xl md:text-4xl">
                 Medical <span className="text-primary">Centers</span>
               </h3>
-              <h6 className="text-[#5C6169] xl:text-xl lg:text-lg">
+              <h6 className="text-[#5C6169] text-sm xl:text-xl md:text-lg">
                 Connect instantly with a 24x7 specialist or choose to video
                 visit a particular doctor.
               </h6>
@@ -112,12 +116,15 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div>
+          <div className="hidden md:block">
             <Image alt="doctor-image" src="/images/doctor.png"></Image>
           </div>
         </div>
-        <div className="absolute flex flex-col gap-5 md:top-2/3 bg-primary-foreground rounded-xl  shadow-xl z-20 w-4/5 p-10">
-          <form className="flex gap-5 justify-around" onSubmit={onSearchClick}>
+        <div className="absolute flex flex-col gap-5 top-3/4 md:top-2/3 bg-primary-foreground rounded-xl  shadow-xl z-20 w-4/5 p-10">
+          <form
+            className="flex flex-col sm:flex-row gap-5 justify-around"
+            onSubmit={onSearchClick}
+          >
             <Autocomplete
               startContent={<FaSearch fill="#E4E4E7" />}
               placeholder="State"
@@ -126,7 +133,11 @@ export default function Home() {
               aria-labelledby="state"
               onSelectionChange={onStateChangeHandler}
             >
-              {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
+              {(item) => (
+                <AutocompleteItem key={item.value}>
+                  {item.label}
+                </AutocompleteItem>
+              )}
             </Autocomplete>
 
             <Autocomplete
@@ -137,26 +148,33 @@ export default function Home() {
               aria-labelledby="city"
               onSelectionChange={onCityChangeHandler}
             >
-              {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
+              {(item) => (
+                <AutocompleteItem key={item.value}>
+                  {item.label}
+                </AutocompleteItem>
+              )}
             </Autocomplete>
 
-            <Button
-              startContent={<FaSearch />}
-              className="text-lg"
-              type="submit"
-              size="lg"
-              color="primary"
-            >
-              Search
-            </Button>
+            <div className="w-full">
+              <Button
+                startContent={<FaSearch />}
+                className="text-lg"
+                type="submit"
+                size="lg"
+                fullWidth
+                color="primary"
+              >
+                Search
+              </Button>
+            </div>
           </form>
-          <div className="flex flex-col justify-center gap-4">
+          <div className="hidden lg:flex flex-col justify-center gap-4">
             <strong className="text-center">You may be looking for</strong>
-            <div className="flex  w-full justify-evenly">
+            <div className="grid grid-cols-2 gap-4 md:gap-6 sm:grid-cols-3 md:grid-cols-5 w-full justify-evenly">
               {ButtonList.map((item, i) => (
                 <CardIconButton
                   clickable
-                  className="2xl:min-w-48 lg:min-w-36"
+                  className="min-w-full"
                   Icon={item.Icon}
                   label={item.label}
                   key={`icon-button-${i}-${item.href || "#"}`}
@@ -173,7 +191,6 @@ export default function Home() {
       <BlogNews />
       <Family />
       <Faq />
-
     </>
   );
 }

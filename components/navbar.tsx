@@ -1,4 +1,3 @@
-
 import { Link } from "@nextui-org/link";
 import {
   NavbarBrand,
@@ -54,8 +53,8 @@ export const Navbar = () => {
         </ul>
         {/* <ThemeSwitch /> */}
       </NavbarContent>
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <ThemeSwitch />
+      <NavbarContent className=" lg:hidden basis-1 pl-4" justify="end">
+        {/* <ThemeSwitch /> */}
         <NavbarMenuToggle />
       </NavbarContent>
 
