@@ -5,7 +5,7 @@ import NextLink from "next/link";
 import { title } from "../primitives";
 const MobileApp: FC = () => {
   return (
-    <section className="flex justify-center gap-8 bg-blue-50 px-6 pb-10  md:pb-0  pt-10 relative w-full">
+    <section className="flex justify-center gap-8 bg-blue-100 px-6 pb-10  md:pb-0  pt-10 relative w-full">
       <div className="hidden md:block">
         <Image removeWrapper src="/images/mobile-app.png" width={500} />
       </div>

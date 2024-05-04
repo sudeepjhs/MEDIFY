@@ -1,27 +1,39 @@
 import { VerifiedHospital } from "@/components/icons";
-import { Hospital, TimeType } from "@/config/types";
+import { Hospital, HospitalEntity, TimeType } from "@/config/types";
 import { Button } from "@nextui-org/button";
+import { Chip } from "@nextui-org/react";
+import clsx from "clsx";
 import { FC, useState } from "react";
 import { FaThumbsUp } from "react-icons/fa6";
-import BookingSlider from "../hospital/BookingSlider";
 import { toast } from "react-toastify";
+import BookingSlider from "../hospital/BookingSlider";
 
 const HospitalCard: FC<{
   hospital: Hospital;
   className?: string;
   slotDates?: Array<Date>;
-}> = ({ hospital, className, slotDates }) => {
+  showBooked?: boolean;
+  bookedDate?: string;
+  bookedTime?: string;
+}> = ({
+  hospital,
+  className,
+  slotDates,
+  showBooked,
+  bookedDate,
+  bookedTime,
+}) => {
   const [showSlot, setShowSlot] = useState(false);
 
   const bookAppointment = (date: Date, time: string, timeType: TimeType) => {
     try {
-      const data = { hospital, date, time, timeType };
+      const data: HospitalEntity = { hospital, date, time, timeType };
       let myBooking = localStorage.getItem("mybooking");
       if (!myBooking) {
         localStorage.setItem("mybooking", JSON.stringify([data]));
         return;
       }
-      const booking: Array<typeof data> = JSON.parse(myBooking);
+      const booking: Array<HospitalEntity> = JSON.parse(myBooking);
       booking.push(data);
       localStorage.setItem("mybooking", JSON.stringify(booking));
       toast.success("Appointment Confirmed");
@@ -40,7 +52,12 @@ const HospitalCard: FC<{
       <div className="flex flex-wrap md:flex-nowrap gap-6 md:gap-10">
         <div className="flex gap-6 md:mb-10 grow">
           <VerifiedHospital size={100} />
-          <div className="flex flex-col mt-4 gap-2 divide-dashed divide-y">
+          <div
+            className={clsx(
+              "flex flex-col mt-4 gap-2",
+              !showBooked && "divide-dashed divide-y"
+            )}
+          >
             <div className="flex flex-col gap-2">
               <h4 className="text-primary font-semibold sm:text-lg lg:text-2xl">
                 {hospital.HospitalName}
@@ -50,11 +67,13 @@ const HospitalCard: FC<{
                 <p>Smilessence Center for Advanced Dentistry + 1</p>
                 <span>more</span>
               </div>
-              <p className="text-default-600 space-x-2 md:text-medium text-xs">
-                <span className="text-success font-bold">Free</span>
-                <span className="line-through text-default-400">₹{500}</span>
-                <span>Consultation fee at clinic</span>
-              </p>
+              {!showBooked && (
+                <p className="text-default-600 space-x-2 md:text-medium text-xs">
+                  <span className="text-success font-bold">Free</span>
+                  <span className="line-through text-default-400">₹{500}</span>
+                  <span>Consultation fee at clinic</span>
+                </p>
+              )}
             </div>
             {!showSlot && (
               <div className="pt-2">
@@ -70,11 +89,35 @@ const HospitalCard: FC<{
             )}
           </div>
         </div>
-        <div className="flex flex-col justify-center  md:justify-end items-center gap-4 mb-6 w-full md:w-fit">
-          <h6 className="text-success font-medium text-sm">Available Today</h6>
-          <Button color="primary" radius="sm" onClick={() => setShowSlot(true)}>
-            Book FREE Center Visit
-          </Button>
+        <div
+          className={clsx(
+            "flex justify-center gap-4 w-full md:w-fit",
+            !showBooked && "flex-col items-center md:justify-end mb-6"
+          )}
+        >
+          {!showBooked ? (
+            <>
+              <h6 className="text-success font-medium text-sm">
+                Available Today
+              </h6>
+              <Button
+                color="primary"
+                radius="sm"
+                onClick={() => setShowSlot(true)}
+              >
+                Book FREE Center Visit
+              </Button>
+            </>
+          ) : (
+            <div className="p-3 flex flex-row lg:justify-center w-full gap-4">
+              <Chip radius="sm" variant="bordered" color="primary" size="lg">
+                {bookedTime}
+              </Chip>
+              <Chip radius="sm" variant="bordered" color="success" size="lg">
+                {bookedDate}
+              </Chip>
+            </div>
+          )}
         </div>
       </div>
       {showSlot && (

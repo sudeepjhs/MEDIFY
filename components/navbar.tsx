@@ -46,7 +46,7 @@ export const Navbar = () => {
             </NavbarItem>
           ))}
           <NavbarItem key={"My Booking"}>
-            <Button color="primary" size="lg">
+            <Button as={NextLink} color="primary" href="/my-booking" size="lg">
               My Booking
             </Button>
           </NavbarItem>

@@ -117,7 +117,11 @@ export default function Home() {
             </div>
           </div>
           <div className="hidden md:block">
-            <Image alt="doctor-image" src="/images/doctor.png"></Image>
+            <Image
+              alt="doctor-image"
+              loading="eager"
+              src="/images/doctor.png"
+            ></Image>
           </div>
         </div>
         <div className="absolute flex flex-col gap-5 top-3/4 md:top-2/3 bg-primary-foreground rounded-xl  shadow-xl z-20 w-4/5 p-10">

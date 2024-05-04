@@ -35,3 +35,10 @@ export enum TimeType {
   Afternoon = "afternoon",
   Evening = "evening",
 }
+
+export interface HospitalEntity {
+  hospital: Hospital;
+  date: Date;
+  time: string;
+  timeType: TimeType;
+}
