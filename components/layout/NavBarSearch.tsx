@@ -28,11 +28,11 @@ const NavBarSearch: FC = () => {
       });
   }, []);
 
-  const onStateChangeHandler = (value: Key) => {
+  const onStateChangeHandler = (value: Key | null) => {
     setSelectedState(() => value);
   };
 
-  const onCityChangeHandler = (value: Key) => {
+  const onCityChangeHandler = (value: Key | null) => {
     setSelectedCity(() => value);
   };
 
