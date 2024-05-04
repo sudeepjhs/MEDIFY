@@ -67,12 +67,12 @@ export default function Home() {
       });
   }, []);
 
-  const onStateChangeHandler = (value: Key) => {
-    setSelectedState(() => value as typeof selectedState);
+  const onStateChangeHandler = (key: Key | null) => {
+    setSelectedState(() => key);
   };
 
-  const onCityChangeHandler = (value: Key) => {
-    setSelectedCity(() => value as typeof selectedCity);
+  const onCityChangeHandler = (key: Key | null) => {
+    setSelectedCity(() => key);
   };
 
   const onSearchClick = (e: FormEvent) => {
