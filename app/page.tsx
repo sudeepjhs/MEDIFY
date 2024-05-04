@@ -68,11 +68,11 @@ export default function Home() {
   }, []);
 
   const onStateChangeHandler = (value: Key) => {
-    setSelectedState(() => value);
+    setSelectedState(() => value as typeof selectedState);
   };
 
   const onCityChangeHandler = (value: Key) => {
-    setSelectedCity(() => value);
+    setSelectedCity(() => value as typeof selectedCity);
   };
 
   const onSearchClick = (e: FormEvent) => {
