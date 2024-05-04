@@ -6,7 +6,7 @@ import { getUpcomingDates } from "@/helper/date";
 import { Skeleton } from "@nextui-org/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { TbDiscountCheck } from "react-icons/tb";
+import { TbRosetteDiscountCheck } from "react-icons/tb";
 
 const upcomingDates = getUpcomingDates(7);
 
@@ -46,7 +46,7 @@ export default function SearchResult({
           {city.replaceAll("%20", " ").trim()}
         </h1>
         <div className="flex gap-2 iems-center">
-          <TbDiscountCheck size={24} className="text-success" />
+          <TbRosetteDiscountCheck size={24} className="text-success" />
           <h6 className="text-default-600">
             Book appointments with minimum wait-time & verified doctor details
           </h6>
